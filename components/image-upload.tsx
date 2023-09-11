@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CldUploadButton } from "next-cloudinary";
-import Image from "next/image";
 
 interface ImageUploadProps {
   value: string;
@@ -15,16 +15,18 @@ export const ImageUpload = ({
   onChange,
   disabled,
 }: ImageUploadProps) => {
-  const [isMounted, setInMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setInMounted(true);
+    setIsMounted(true);
   }, []);
 
-  if (!isMounted) return null;
+  if (!isMounted) {
+    return false;
+  }
 
   return (
-    <div className="flex w-full flex-col items-center justify-center space-y-4 ">
+    <div className="flex w-full flex-col items-center justify-center space-y-4">
       <CldUploadButton
         options={{ maxFiles: 1 }}
         onUpload={(result: any) => onChange(result.info.secure_url)}
@@ -32,22 +34,27 @@ export const ImageUpload = ({
       >
         <div
           className="
-        flex
-        flex-col
-        items-center
-        justify-center
-        space-y-2
-        rounded-lg
-        border-4
-        border-dashed 
-        border-primary/10
-        p-4
-        transition
-        hover:opacity-75
-        "
+            flex 
+            flex-col 
+            items-center
+            justify-center 
+            space-y-2 
+            rounded-lg 
+            border-4 
+            border-dashed 
+            border-primary/10 
+            p-4 
+            transition 
+            hover:opacity-75
+          "
         >
           <div className="relative h-40 w-40">
-            <Image fill alt="Upload" src={value || "/placeholder.svg"} />
+            <Image
+              fill
+              alt="Upload"
+              src={value || "/placeholder.svg"}
+              className="rounded-lg object-cover"
+            />
           </div>
         </div>
       </CldUploadButton>
