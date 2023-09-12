@@ -1,7 +1,8 @@
 import db from "@/lib/db";
 import { redirect } from "next/navigation";
 import { auth, redirectToSignIn } from "@clerk/nextjs";
-import { ChatHeader } from "@/components/chat-header";
+
+import { ChatClient } from "./components/client";
 
 interface ChatPageProps {
   params: {
@@ -41,11 +42,7 @@ const ChatIdPage = async ({ params }: ChatPageProps) => {
     return redirect("/");
   }
 
-  return (
-    <div>
-      <ChatHeader companion={companion} />
-    </div>
-  );
+  return <ChatClient companion={companion} />;
 };
 
 export default ChatIdPage;

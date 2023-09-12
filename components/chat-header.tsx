@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+
 interface ChatHeaderProps {
   companion: Companion & {
     messages: Message[];
