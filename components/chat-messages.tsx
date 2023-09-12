@@ -48,7 +48,7 @@ export const ChatMessages = ({
       {messages.map((message) => (
         <ChatMessage
           key={message.content}
-          src={message.src}
+          src={companion.src}
           content={message.content}
           role={message.role}
         />

@@ -47,11 +47,18 @@ export const ChatMessage = ({
       )}
     >
       {role !== "user" && src && <BotAvatar src={src} />}
-      <div className="max-w-sm rounded-md bg-primary/10 px-4 py-2 text-sm">
+      <div
+        className={cn(
+          "max-w-sm rounded-md bg-primary/10 px-4 py-2 text-sm",
+          role === "user" && "bg-[#006AFF]",
+        )}
+      >
         {isLoading ? (
           <BeatLoader color={theme === "light" ? "black" : "white"} size={5} />
-        ) : (
+        ) : content ? (
           content
+        ) : (
+          "Ohh! I can't understand you properly"
         )}
       </div>
       {role === "user" && <UserAvatar />}

@@ -9,7 +9,7 @@ export const UserAvatar = () => {
 
   return (
     <Avatar className="h-12 w-12">
-      <AvatarImage src={user?.imageUrl} />
+      <AvatarImage src={user?.imageUrl} className="object-cover" />
     </Avatar>
   );
 };
