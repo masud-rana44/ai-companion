@@ -60,7 +60,12 @@ export const ChatClient = ({ companion }: ChatClientProps) => {
         isLoading={isLoading}
         messages={messages}
       />
-      <ChatForm />
+      <ChatForm
+        input={input}
+        handleInputChange={handleInputChange}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+      />
     </div>
   );
 };

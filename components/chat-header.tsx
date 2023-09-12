@@ -22,7 +22,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-
 interface ChatHeaderProps {
   companion: Companion & {
     messages: Message[];
@@ -56,7 +55,7 @@ export const ChatHeader = ({ companion }: ChatHeaderProps) => {
   };
 
   return (
-    <div className="flex w-full items-center justify-between border-b border-primary/10 p-4">
+    <div className="flex w-full items-center justify-between border-b border-primary/10 pb-4">
       <div className="flex items-center gap-x-2">
         <Button onClick={() => router.back()} size="icon" variant="ghost">
           <ChevronLeft className="h-8 w-8" />
