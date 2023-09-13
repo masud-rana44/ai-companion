@@ -50,7 +50,7 @@ export const ChatMessage = ({
       <div
         className={cn(
           "max-w-sm rounded-md bg-primary/10 px-4 py-2 text-sm",
-          role === "user" && "bg-[#006AFF]",
+          role === "user" && "bg-[#cbd5e1] dark:bg-[#006AFF]",
         )}
       >
         {isLoading ? (
