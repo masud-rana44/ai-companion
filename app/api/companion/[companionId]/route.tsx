@@ -2,7 +2,7 @@ import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 import db from "@/lib/db";
-import { checkSubscription } from "@/lib/subscription";
+// import { checkSubscription } from "@/lib/subscription";
 
 export async function PATCH(
   req: Request,
@@ -38,11 +38,11 @@ export async function PATCH(
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
-    const isPro = await checkSubscription();
+    // const isPro = await checkSubscription();
 
-    if (!isPro) {
-      return new NextResponse("Pro subscription required", { status: 403 });
-    }
+    // if (!isPro) {
+    //   return new NextResponse("Pro subscription required", { status: 403 });
+    // }
     const companion = await db.companion.update({
       where: {
         id: params.companionId,

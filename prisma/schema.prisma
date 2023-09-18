@@ -1,37 +1,37 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Category {
-  id        String @id @default(uuid())
-  name      String
+  id   String @id @default(uuid()) @map("_id")
+  name String
 
   companions Companion[]
 }
 
 model Companion {
-  id            String @id @default(uuid())
-  userId        String
-  userName      String
-  src           String
-  name          String @db.Text
-  description   String
-  instructions  String @db.Text
-  seed          String @db.Text
+  id           String @id @default(uuid()) @map("_id")
+  userId       String
+  userName     String
+  src          String
+  name         String @db.String
+  description  String
+  instructions String @db.String
+  seed         String @db.String
 
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  category      Category @relation(fields: [categoryId], references: [id])
-  categoryId    String
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 
-  messages      Message[]
+  messages Message[]
 
   @@index([categoryId])
   @@fulltext([name])
@@ -43,25 +43,25 @@ enum Role {
 }
 
 model Message {
-  id             String @id @default(uuid())
-  role           Role
-  content        String @db.Text
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id        String   @id @default(uuid()) @map("_id")
+  role      Role
+  content   String   @db.String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  companionId    String
-  userId         String
+  companionId String
+  userId      String
 
-  companion      Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+  companion Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
 
   @@index([companionId])
 }
 
 model UserSubscription {
-  id                      String      @id @default(cuid())
-  userId                  String      @unique
-  stripeCustomerId        String?     @unique @map(name: "stripe_customer_id")
-  stripeSubscriptionId    String?     @unique @map(name: "stripe_subscription_id")
-  stripePriceId           String?     @map(name: "stripe_price_id")
-  stripeCurrentPeriodEnd  DateTime?   @map(name: "stripe_current_priod_end")
+  id                     String    @id @default(cuid()) @map("_id")
+  userId                 String    @unique
+  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_priod_end")
 }

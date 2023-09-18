@@ -8,11 +8,11 @@ async function main() {
       data: [
         { name: "Famous People" },
         { name: "Movies & TV" },
-        { name: "Musicians" },
-        { name: "Games" },
-        { name: "Animals" },
-        { name: "Philosophy" },
         { name: "Scientists" },
+        { name: "Philosophy" },
+        { name: "Animals" },
+        { name: "Games" },
+        { name: "Others" },
       ],
     });
   } catch (error) {
