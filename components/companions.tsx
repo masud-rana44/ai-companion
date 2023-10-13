@@ -1,8 +1,12 @@
+"use client";
+
 import { Companion } from "@prisma/client";
 import Image from "next/image";
 import { Card, CardFooter, CardHeader } from "./ui/card";
 import Link from "next/link";
 import { MessageSquare } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 interface CompanionsProps {
   data: (Companion & {
@@ -13,6 +17,27 @@ interface CompanionsProps {
 }
 
 export const Companions = ({ data }: CompanionsProps) => {
+  const [companions, setCompanions] = useState(data);
+  const searchParams = useSearchParams();
+  const searchedText = searchParams.get("name");
+
+  useEffect(() => {
+    if (searchedText) {
+      const searchedCompanions = data.filter(
+        (comp) =>
+          comp.name
+            .toLocaleLowerCase()
+            .includes(searchedText.toLocaleLowerCase()) ||
+          comp.description
+            .toLocaleLowerCase()
+            .includes(searchedText.toLocaleLowerCase()),
+      );
+      setCompanions(searchedCompanions);
+    } else {
+      setCompanions(data);
+    }
+  }, [searchedText, data]);
+
   if (data.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center space-y-3 pt-10">
@@ -26,7 +51,7 @@ export const Companions = ({ data }: CompanionsProps) => {
 
   return (
     <div className="grid grid-cols-2 gap-2 border-0 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-      {data.map((item) => (
+      {companions.map((item) => (
         <Card
           key={item.id}
           className="cursor-pointer rounded-xl border-0 bg-primary/10 transition hover:opacity-75"

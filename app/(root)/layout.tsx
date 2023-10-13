@@ -1,10 +1,10 @@
 import { Navbar } from "@/components/navbar";
 import { Sidebar } from "@/components/sidebar";
-// import { checkSubscription } from "@/lib/subscription";
+import { checkSubscription } from "@/lib/subscription";
 import React from "react";
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const isPro = true;
+  const isPro = await checkSubscription();
 
   return (
     <div className="h-full">

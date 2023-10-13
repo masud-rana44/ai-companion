@@ -1,20 +1,9 @@
 <h1 align="center">
-AI Companion (SaaS) with Next.js 13, React, Tailwind, Prisma, Stripe, MongoDB</h1>
+AI Companion App with Next.js 13, React, Tailwind, Prisma, Stripe, MongoDB</h1>
 
-<p align="center"><img src="./src/data/screenshort/1.PNG" alt="AiCompanion homepage"></p>
+<p align="center"><img src="./data/screenshort/1.PNG" alt="AiCompanion homepage"></p>
 
-<p>This is a repository for a SaaS AI Platform with Next.js 13, React, Tailwind, Prisma, Stripe, mongodb, Upstash, Langchain, ShandcnUI.</p>
-
-## 🚀 Live Demo
-
-[ai-companion-theta.vercel.app](ai-companion-theta.vercel.app)
-
-## 🎮 Demo Account
-
-You can access using the following demo account:
-
-- **Email**: temp@example.com
-- **Password**: test1234
+<p>This is a repository to create and host AI companions that you can chat via SMS. This application build with Next.js 13, React, Tailwind, Prisma, Stripe, mongodb, Upstash, Langchain, ShandcnUI and many more technologies.</p>
 
 ## 📝 Features
 
@@ -29,6 +18,10 @@ You can access using the following demo account:
 - Light/Dark mode
 - Full responsivity and mobile UI
 - ORM using Prisma
+
+## 🚀 Live Demo
+
+[ai-companion-theta.vercel.app](ai-companion-theta.vercel.app)
 
 ## 🛠️ Installation Steps:
 
@@ -81,16 +74,17 @@ NEXT_PUBLIC_APP_URL=
 npx prisma db push
 ```
 
-<p>5. Start the app</p>
+<p>5. Seed Category </p>
+
+```
+node scripts/seed.ts
+```
+
+<p>6. Start the app</p>
 
 ```
 npm run dev
 ```
-
-### screenshots
-
-<img src="./src/data/screenshort/2.PNG" alt="AiCompanion homepage">
-<img src="./src/data/screenshort/3.PNG" alt="AiCompanion homepage">
 
 ## 💻 Technology Used
 
