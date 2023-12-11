@@ -19,9 +19,6 @@ AI Companion App with Next.js 13, React, Tailwind, Prisma, Stripe, MongoDB</h1>
 - Full responsivity and mobile UI
 - ORM using Prisma
 
-## 🚀 Live Demo
-
-[ai-companion-theta.vercel.app](ai-companion-theta.vercel.app)
 
 ## 🛠️ Installation Steps:
 
